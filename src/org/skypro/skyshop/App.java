@@ -51,7 +51,7 @@ public class App {
         // Печать стоимости пустой корзины
         System.out.println(basket.getTotalPrice());
         System.out.println();
-// Печать содержимого корзины с несколькими товарами.
+// Печать содержимого корзины и стоимости с несколькими товарами.
         basket.addProduct(apple);
         basket.addProduct(orange);
         basket.printBasketProduct();
