@@ -1,8 +1,7 @@
 package org.skypro.skyshop;
 
 import org.skypro.skyshop.basket.ProductBasket;
-
-import java.io.PrintStream;
+import org.skypro.skyshop.product.Product;
 
 public class App {
 
