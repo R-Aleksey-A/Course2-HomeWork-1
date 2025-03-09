@@ -12,7 +12,7 @@ public class App {
         System.out.println("Sky Hop");
         ProductBasket basket = new ProductBasket();
         // basket.addProduct(new Product("Яблоко", 50));
-        SimpleProduct apple = new SimpleProduct("Яблоко", 50);
+        SimpleProduct apple = new SimpleProduct("Яблоко", 100);
         SimpleProduct banana = new SimpleProduct("Банан", 40);
         SimpleProduct orange = new SimpleProduct("Апельсин", 100);
         SimpleProduct kiwi = new SimpleProduct("Киви", 80);
@@ -43,7 +43,7 @@ public class App {
         System.out.println();
 
         // Очищение корзины
-        basket.ClearBasket();
+        basket.сlearBasket();
         System.out.println();
 
         //Печать очищенной корзины
@@ -57,7 +57,8 @@ public class App {
         basket.addProduct(apple);
         basket.addProduct(orange);
         basket.printBasketProduct();
-
+        basket.сlearBasket();
+        System.out.println();
         // Печать товара со скидкой 50%
         DiscountedProduct discountedApple = new DiscountedProduct("Яблоко со скидкой", 100, 50);
         // Товар с фиксированной ценой

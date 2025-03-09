@@ -34,8 +34,9 @@ public class ProductBasket {
         }
         double totalPrice = 0.0;
         int specialCount=0;
+
         for (int i = 0; i < counter; i++) {
-            System.out.println(basket[i]);
+            System.out.println(basket[i].toString());
             totalPrice += basket[i].getPrice();
             if(basket[i].isSpecial()){
                 specialCount++;
@@ -58,7 +59,7 @@ public class ProductBasket {
         return false;
 
     }
-    public void ClearBasket(){
+    public void сlearBasket(){
         System.out.println("Очищение корзины");
         Arrays.fill(basket, null);
         counter=0;
