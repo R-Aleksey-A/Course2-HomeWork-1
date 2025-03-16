@@ -1,7 +1,11 @@
 package org.skypro.skyshop;
 
+
+import org.skypro.skyshop.Article.Article;
 import org.skypro.skyshop.basket.ProductBasket;
 import org.skypro.skyshop.product.*;
+import org.skypro.skyshop.search.SearchEngine;
+import org.skypro.skyshop.search.Searchable;
 
 public class App {
 
@@ -63,5 +67,50 @@ public class App {
         basket.addProduct(discountedApple);
         basket.addProduct(fixPriceOrange);
         basket.printBasketProduct();
+
+        //Поиск по признаку
+        SearchEngine searchEngine = new SearchEngine(10);
+
+        searchEngine.add(apple);
+        searchEngine.add(orange);
+        searchEngine.add(banana);
+        searchEngine.add(grape);
+        searchEngine.add(kiwi);
+
+
+        Article article1 = new Article("Название статьи 1", "Текст статьи 1");
+        Article article2 = new Article("Название статьи 2", "Текст статьи 2");
+        Article article3 = new Article("Название статьи 3", "Текст статьи 3");
+        Article article4 = new Article("Название статьи 4", "Текст статьи 4");
+
+        searchEngine.add(article1);
+        searchEngine.add(article2);
+        searchEngine.add(article3);
+        searchEngine.add(article4);
+
+        Searchable[] searchResults = searchEngine.search("PRODUCT");
+        for (Searchable result : searchResults) {
+            if (result == null) continue;
+            System.out.println(result);
+        }
+        System.out.println();
+
+        searchResults = searchEngine.search("ARTICLE");
+        for (Searchable result : searchResults) {
+            if (result == null) continue;
+            System.out.println(result);
+        }
+        System.out.println();
+
+        searchResults = searchEngine.search("Банан");
+        for (Searchable result : searchResults) {
+            if (result == null) continue;
+            System.out.println(result);
+        }
+        System.out.println();
+
+
     }
+
+
 }

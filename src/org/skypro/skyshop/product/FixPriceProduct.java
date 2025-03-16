@@ -1,8 +1,6 @@
 package org.skypro.skyshop.product;
 
-import org.skypro.skyshop.Article.Searchable;
-
-public class FixPriceProduct extends Product implements Searchable {
+public class FixPriceProduct extends Product {
     private static final double FIXED_PRICE = 100.0;
 
     public FixPriceProduct(String name) {
@@ -21,25 +19,5 @@ public class FixPriceProduct extends Product implements Searchable {
 
     public String toString() {
         return name + ": Фиксированная цена " + FIXED_PRICE;
-    }
-
-    @Override
-    public String getSearchTerm() {
-        return getName();
-    }
-
-    @Override
-    public String getContentType() {
-        return "PRODUCT";
-    }
-
-    @Override
-    public String getName(){
-        return super.getName();
-    }
-
-    @Override
-    public String getStringRepresentation() {
-        return getName()+" - " + getContentType();
     }
 }
