@@ -67,7 +67,8 @@ public class App {
         basket.addProduct(discountedApple);
         basket.addProduct(fixPriceOrange);
         basket.printBasketProduct();
-
+        System.out.println("==========================================");
+        System.out.println("Поиск товара ");
         //Поиск по признаку
         SearchEngine searchEngine = new SearchEngine(10);
 
