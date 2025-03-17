@@ -30,10 +30,7 @@ public class Article implements Searchable {
     public String getSearchContent(){
         return "ARTICLE";
     }
-    @Override
-    public String getStringRepresentation(){
-        return article+ "\nТип - ARTICLE\n";
-    }
+
 
 
 }

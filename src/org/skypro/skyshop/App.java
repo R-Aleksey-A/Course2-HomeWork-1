@@ -7,6 +7,9 @@ import org.skypro.skyshop.product.*;
 import org.skypro.skyshop.search.SearchEngine;
 import org.skypro.skyshop.search.Searchable;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class App {
 
     public static void main(String[] args) {
@@ -96,6 +99,7 @@ public class App {
         }
         System.out.println();
 
+
         searchResults = searchEngine.search("ARTICLE");
         for (Searchable result : searchResults) {
             if (result == null) continue;
@@ -110,7 +114,7 @@ public class App {
         }
         System.out.println();
 
-
+        System.out.println(Arrays.toString(searchResults));
     }
 
 
