@@ -1,18 +1,18 @@
 package org.skypro.skyshop;
 
 
-import org.skypro.skyshop.Article.Article;
+import org.skypro.skyshop.article.Article;
 import org.skypro.skyshop.basket.ProductBasket;
+import org.skypro.skyshop.exception.BestResultNotFoundException;
 import org.skypro.skyshop.product.*;
 import org.skypro.skyshop.search.SearchEngine;
 import org.skypro.skyshop.search.Searchable;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class App {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws BestResultNotFoundException {
         System.out.println("Sky Hop");
         ProductBasket basket = new ProductBasket();
         // basket.addProduct(new Product("Яблоко", 50));
@@ -104,10 +104,11 @@ public class App {
         for (Searchable result : searchResults) {
             if (result == null) continue;
             System.out.println(result);
+
         }
         System.out.println();
 
-        searchResults = searchEngine.search("Банан");
+        searchResults = searchEngine.search("Хлеб");
         for (Searchable result : searchResults) {
             if (result == null) continue;
             System.out.println(result);
@@ -115,6 +116,7 @@ public class App {
         System.out.println();
 
         System.out.println(Arrays.toString(searchResults));
+
     }
 
 
