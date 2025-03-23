@@ -1,16 +1,21 @@
 package org.skypro.skyshop.product;
 
+import org.skypro.skyshop.exception.NameException;
 import org.skypro.skyshop.search.Searchable;
 
 public abstract class Product implements Searchable {
     final String name;
 
-    public Product(String name) {
+    public Product(String name)  {
+    if (name == null || name.equals("")||name.isBlank()){
+        throw  new NameException();
+    }
+
         this.name = name;
     }
 
     public Product() {
-        this("");
+        this("f");
     }
 
     public String getName() {
@@ -29,12 +34,12 @@ public abstract class Product implements Searchable {
 
 
 
-    public abstract double getPrice();
+    public abstract double getPriceOfProduct();
 
     public abstract boolean isSpecial();
 
     @Override
     public String toString() {
-        return name + " : " + getPrice();
+        return name + " : " + getPriceOfProduct();
     }
 }

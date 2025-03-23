@@ -1,17 +1,28 @@
 package org.skypro.skyshop.product;
 
+import org.skypro.skyshop.exception.BestResultNotFoundException;
+import org.skypro.skyshop.exception.DiscountedException;
+
+
 public class DiscountedProduct extends Product {
     private  double basePrice;
     private  int discountPercent;
 
     public DiscountedProduct (String name, double basePrice, int discountPercent) {
         super(name);
+        if (basePrice<0){
+            throw new PriceException();
+        }
+        if (percentageDiscount<0 || percentageDiscount>100){
+            throw new DiscountedException();
+        }
+
         this.basePrice=basePrice;
-        this.discountPercent = discountPercent;
+        this.percentageDiscount = percentageDiscount;
     }
 
-    public double getPrice() {
-        return basePrice*(1-discountPercent/100.0);
+    public int getPriceOfProduct() {
+        return basePrice-((basePrice*percentageDiscount)/100.0);
     }
 
     @Override
@@ -21,6 +32,6 @@ public class DiscountedProduct extends Product {
 
     @Override
     public String toString() {
-        return name +" : "+ getPrice()+ "("+ discountPercent+ " %)";
+        return name +" : "+ basePrice()+ "рублей : скидка "+ percentageDiscount+ " %)";
     }
 }
