@@ -21,15 +21,15 @@ public class SearchEngine {
             }
             if (countResult == 5) break;
         }
-        if (countResult == 0){
+        if (countResult == 0) {
             throw new BestResultNotFoundException("продукта нет");
         }
-            return results;
+        return results;
     }
 
     public void add(Searchable searchable) {
         searchables[Count++] = searchable;
-    }
 
+    }
 
 }

@@ -1,4 +1,4 @@
-package org.skypro.skychop.exception;
+package org.skypro.skyshop.exception;
 
 public class DiscountedException extends IllegalArgumentException {
 
