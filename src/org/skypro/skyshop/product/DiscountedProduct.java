@@ -1,9 +1,8 @@
 package org.skypro.skyshop.product;
-import org.skypro.skyshop.exception.BestResultNotFoundException;
 import org.skypro.skyshop.exception.DiscountedException;
 import org.skypro.skyshop.exception.PriceException;
 
-import java.text.ParseException;
+
 
 public class DiscountedProduct extends Product {
     public   double basePrice;
@@ -21,9 +20,7 @@ public class DiscountedProduct extends Product {
         this.basePrice=basePrice;
         this.discountPercent = discountPercent;
     }
-    public DiscountedProduct(){
-        this ("f", 1,0);
-    }
+
 
     public double getPrice() {
         return basePrice*(1-discountPercent/100.0);

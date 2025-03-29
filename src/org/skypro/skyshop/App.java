@@ -114,7 +114,7 @@ public class App {
             }
             System.out.println();
             System.out.println("Поиск объекта по совпадению");
-            searchResults = searchEngine.search("Яблоко");
+            searchResults = searchEngine.search("Хлеб");
             for (Searchable result : searchResults) {
                 if (result == null) continue;
                 System.out.println(result);

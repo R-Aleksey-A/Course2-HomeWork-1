@@ -2,7 +2,6 @@ package org.skypro.skyshop.search;
 
 import org.skypro.skyshop.exception.BestResultNotFoundException;
 
-import java.util.Arrays;
 
 public class SearchEngine {
     Searchable[] searchables;

@@ -6,9 +6,6 @@ public class FixPriceProduct extends Product {
     public FixPriceProduct(String name) {
         super(name);
     }
-    public FixPriceProduct(){
-        this("f");
-    }
 
     @Override
     public double getPrice() {

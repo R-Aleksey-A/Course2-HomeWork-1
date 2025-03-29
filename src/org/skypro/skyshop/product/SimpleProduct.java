@@ -15,10 +15,6 @@ public class SimpleProduct extends Product {
         this.price = price;
     }
 
-    public SimpleProduct() {
-        this("f", 1);
-    }
-
     @Override
     public double getPrice() {
         return price;
