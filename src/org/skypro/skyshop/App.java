@@ -11,11 +11,13 @@ import org.skypro.skyshop.product.*;
 import org.skypro.skyshop.search.SearchEngine;
 import org.skypro.skyshop.search.Searchable;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class App {
 
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
         System.out.println("Sky Hop");
         ProductBasket basket = new ProductBasket();
         // basket.addProduct(new Product("Яблоко", 50));
@@ -35,57 +37,36 @@ public class App {
             System.out.println();
 
 
-            // Печать содержимого корзины
+            // Печать содержимого корзины до удаления
             basket.printBasketProduct();
-            System.out.println();
-
-            //Добавление продукта в заполненную корзину, в которой нет места
-            basket.addProduct(grape);
-            System.out.println();
-
-            //Проверка наличия продукта в корзине
-            basket.contanceProduct("Яблоко");
-            System.out.println();
-
-            //Проверка отсутствия продукта в корзине
-            basket.contanceProduct("Виноград");
-            System.out.println();
-
-            // Очищение корзины
-            basket.сlearBasket();
-            System.out.println();
-
-            //Печать очищенной корзины
+            System.out.println("\n---Удаление продукта---");
+            //Удаление существующего продукта из корзины
+            List<Product> removedProducts = basket.removeProductByName("Яблоко");
+            System.out.println("Удаленные продукты:");
+            for (Product product : removedProducts) {
+                System.out.println(product);
+            }
+            // Печать содержимого корзины после удаления
             basket.printBasketProduct();
-            System.out.println();
+            System.out.println("\n--- Удаление несуществующего продукта---");
 
-            // Печать стоимости пустой корзины
-            System.out.println(basket.getTotalPrice());
-            System.out.println();
-            // Печать содержимого корзины и стоимости с несколькими товарами.
-            basket.addProduct(apple);
-            basket.addProduct(orange);
+            // Попытка удалить не существующий продукт
+            removedProducts = basket.removeProductByName("Груша");
+            if (removedProducts.isEmpty()) {
+                System.out.println("Список удаленных продуктов пуст");
+            }
+            //Печать содержимого корзины после попытки удаления несуществующего продукта.
             basket.printBasketProduct();
-            basket.сlearBasket();
-            System.out.println();
-            // Печать товара со скидкой 50%
-            DiscountedProduct discountedApple = new DiscountedProduct("Яблоко со скидкой", 100, 50);
-            // Товар с фиксированной ценой
-            FixPriceProduct fixPriceOrange = new FixPriceProduct("Апельсин с фиксированной ценой");
-            basket.addProduct(discountedApple);
-            basket.addProduct(fixPriceOrange);
-            basket.printBasketProduct();
-            System.out.println("==========================================");
-            System.out.println("Поиск товара ");
+
+
             //Поиск по признаку
-            SearchEngine searchEngine = new SearchEngine(10);
+            SearchEngine searchEngine = new SearchEngine();
             System.out.println();
             searchEngine.add(apple);
             searchEngine.add(orange);
             searchEngine.add(banana);
             searchEngine.add(grape);
             searchEngine.add(kiwi);
-
 
 
             Article article1 = new Article("Название статьи 1", "Текст статьи 1");
@@ -98,7 +79,8 @@ public class App {
             searchEngine.add(article3);
             searchEngine.add(article4);
 
-            Searchable[] searchResults = searchEngine.search("PRODUCT");
+            List<Searchable> searchResults = searchEngine.search("PRODUCT");
+            System.out.println("Результаты поиска по 'PRODUCT':");
             for (Searchable result : searchResults) {
                 if (result == null) continue;
                 System.out.println(result);
@@ -107,12 +89,14 @@ public class App {
 
 
             searchResults = searchEngine.search("ARTICLE");
+            System.out.println("Результат поиска по 'ARTICLE':");
             for (Searchable result : searchResults) {
                 if (result == null) continue;
                 System.out.println(result);
 
             }
             System.out.println();
+
             System.out.println("Поиск объекта по совпадению");
             searchResults = searchEngine.search("Хлеб");
             for (Searchable result : searchResults) {
@@ -122,7 +106,7 @@ public class App {
 
             System.out.println();
 
-           // System.out.println(Arrays.toString(searchResults));
+            // System.out.println(Arrays.toString(searchResults));
 
 
             System.out.println("=================================");
@@ -130,15 +114,12 @@ public class App {
 
         } catch (NameException e) {
             System.out.println("Наименование продукта не может быть пустым!!!");
-        }
-        catch (PriceException e) {
+        } catch (PriceException e) {
             System.out.println("Цена продукта не может быть менее или равна 0 рублей!!!");
-        }
-        catch (DiscountedException e){
+        } catch (DiscountedException e) {
             System.out.println("Скидка не может быть менее 0% и более 100% !!!");
 
-        }
-        catch (BestResultNotFoundException e) {
+        } catch (BestResultNotFoundException e) {
             System.out.println(e.getMessage());
         }
 
