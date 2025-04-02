@@ -103,7 +103,6 @@ public class App {
                 if (result == null) continue;
                 System.out.println(result);
             }
-
             System.out.println();
 
             // System.out.println(Arrays.toString(searchResults));
