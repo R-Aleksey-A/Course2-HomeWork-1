@@ -14,6 +14,7 @@ import org.skypro.skyshop.search.Searchable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class App {
 
@@ -79,29 +80,25 @@ public class App {
             searchEngine.add(article3);
             searchEngine.add(article4);
 
-            List<Searchable> searchResults = searchEngine.search("PRODUCT");
+            Map<String,Searchable> searchResults = searchEngine.search("PRODUCT");
             System.out.println("Результаты поиска по 'PRODUCT':");
-            for (Searchable result : searchResults) {
-                if (result == null) continue;
-                System.out.println(result);
+            for (Map.Entry<String, Searchable>entry: searchResults.entrySet()) {
+                System.out.println(entry.getKey() + ": "+ entry.getValue());
             }
             System.out.println();
 
 
             searchResults = searchEngine.search("ARTICLE");
             System.out.println("Результат поиска по 'ARTICLE':");
-            for (Searchable result : searchResults) {
-                if (result == null) continue;
-                System.out.println(result);
-
+            for (Map.Entry<String, Searchable> entry : searchResults.entrySet()){
+                System.out.println(entry.getKey()+ ": "+ entry.getValue());
             }
             System.out.println();
 
             System.out.println("Поиск объекта по совпадению");
             searchResults = searchEngine.search("Хлеб");
-            for (Searchable result : searchResults) {
-                if (result == null) continue;
-                System.out.println(result);
+            for (Map.Entry<String, Searchable>entry: searchResults.entrySet()) {
+                System.out.println(entry.getKey()+": "+ entry.getValue());
             }
             System.out.println();
 
