@@ -11,10 +11,7 @@ import org.skypro.skyshop.product.*;
 import org.skypro.skyshop.search.SearchEngine;
 import org.skypro.skyshop.search.Searchable;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class App {
 
@@ -80,25 +77,25 @@ public class App {
             searchEngine.add(article3);
             searchEngine.add(article4);
 
-            Map<String,Searchable> searchResults = searchEngine.search("PRODUCT");
+            Set<Searchable> searchResults = searchEngine.search("PRODUCT");
             System.out.println("Результаты поиска по 'PRODUCT':");
-            for (Map.Entry<String, Searchable>entry: searchResults.entrySet()) {
-                System.out.println(entry.getKey() + ": "+ entry.getValue());
+            for (Searchable result: searchResults) {
+                System.out.println(result.getSearchTerm()+": "+ result.getSearchContent());
             }
             System.out.println();
 
 
             searchResults = searchEngine.search("ARTICLE");
             System.out.println("Результат поиска по 'ARTICLE':");
-            for (Map.Entry<String, Searchable> entry : searchResults.entrySet()){
-                System.out.println(entry.getKey()+ ": "+ entry.getValue());
+            for (Searchable result : searchResults){
+                System.out.println(result.getSearchTerm()+ ": "+ result.getSearchContent());
             }
             System.out.println();
 
             System.out.println("Поиск объекта по совпадению");
             searchResults = searchEngine.search("Хлеб");
-            for (Map.Entry<String, Searchable>entry: searchResults.entrySet()) {
-                System.out.println(entry.getKey()+": "+ entry.getValue());
+            for (Searchable result : searchResults) {
+                System.out.println(result.getSearchTerm()+": "+ result.getSearchContent());
             }
             System.out.println();
 
@@ -120,6 +117,4 @@ public class App {
         }
 
     }
-
-
 }

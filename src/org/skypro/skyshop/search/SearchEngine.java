@@ -1,32 +1,32 @@
 package org.skypro.skyshop.search;
 
+import org.skypro.skyshop.comparator.SearchableComparator;
 import org.skypro.skyshop.exception.BestResultNotFoundException;
+import org.skypro.skyshop.product.Product;
 
 import java.util.*;
 
 
 public class SearchEngine {
-    private List<Searchable> searchables;
+    private Set<Searchable> searchables;
 
     public SearchEngine() {
-        searchables = new ArrayList<>();
+        searchables = new HashSet<>();
     }
 
-    public Map<String, Searchable> search(String searchTerm) throws BestResultNotFoundException {
-        Map<String, Searchable> results = new HashMap<>();
+    public Set<Searchable> search(String searchTerm) throws BestResultNotFoundException {
+        Set<Searchable> results = new TreeSet<>(new SearchableComparator());
 
         for (Searchable searchable : searchables) {
             if (searchable.getSearchTerm().contains(searchTerm)) {
-               String key = searchable.getSearchTerm() + " - " + searchable.getSearchContent();
-               results.put(key,searchable);
+               results.add(searchable);
             }
         }
-        Map<String, Searchable> sortedResults = new TreeMap<>(results);
-        return sortedResults;
+        return results;
     }
 
     public void add(Searchable searchable) {
         searchables.add(searchable);
     }
-}
+   }
 
